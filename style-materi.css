@@ -1,0 +1,834 @@
+/* Styles khusus untuk materi.html - REVISI */
+.materi-header {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #2c5530;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateX(-5px);
+}
+
+.title h1 {
+    color: #2c5530;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.title p {
+    color: #2c5530;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.materi-nav {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1rem 0;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.8rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2c5530;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.nav-btn.active {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: rgba(76, 175, 80, 0.6);
+    color: #2c5530;
+    font-weight: bold;
+}
+
+.materi-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.bab {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.bab.active {
+    display: block;
+}
+
+.bab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+}
+
+.bab-header h2 {
+    color: #2c5530;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.bab-number {
+    background: rgba(76, 175, 80, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    color: #2c5530;
+    font-weight: bold;
+    border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+/* STYLES BARU UNTUK STRUKTUR MATERI YANG DIUBAH */
+
+/* Effect Grid untuk Pengertian Gaya */
+.effect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.effect-item {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.effect-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.effect-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.effect-text strong {
+    color: #2c5530;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.effect-text p {
+    color: #2c5530;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Contoh List */
+.contoh-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contoh-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.contoh-item:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.contoh-icon {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+}
+
+.contoh-text {
+    color: #2c5530;
+    font-weight: 500;
+}
+
+/* Container untuk Jenis-Jenis Gaya */
+.jenis-gaya-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.jenis-gaya-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.jenis-gaya-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.gaya-header h3 {
+    color: #2c5530;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.gaya-content p {
+    color: #2c5530;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.contoh-gaya h4 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.contoh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.contoh-item-small {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.contoh-item-small:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.contoh-item-small .contoh-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.contoh-item-small p {
+    color: #2c5530;
+    font-weight: 500;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Styles untuk Pengaruh Gaya */
+.pengaruh-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.pengaruh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.pengaruh-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.pengaruh-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.pengaruh-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.pengaruh-card h3 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.pengaruh-card p {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.contoh-kecil {
+    background: rgba(76, 175, 80, 0.1);
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.contoh-kecil strong {
+    color: #2c5530;
+}
+
+.contoh-kecil {
+    color: #2c5530;
+    font-size: 0.9rem;
+}
+
+.ilustrasi-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ilustrasi-box h3 {
+    color: #2c5530;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.ilustrasi-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.ilustrasi-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.ilustrasi-before, .ilustrasi-after {
+    color: #2c5530;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.ilustrasi-arrow {
+    font-size: 1.5rem;
+    color: #4CAF50;
+}
+
+/* Styles untuk Contoh Penerapan */
+.penerapan-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.penerapan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.penerapan-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.penerapan-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.penerapan-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    display: block;
+}
+
+.penerapan-card h3 {
+    color: #2c5530;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.penerapan-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.penerapan-card li {
+    color: #2c5530;
+    margin-bottom: 0.8rem;
+    padding-left: 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.penerapan-card li:before {
+    content: none;
+}
+
+.aktivitas-box {
+    background: rgba(255, 235, 59, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 235, 59, 0.4);
+}
+
+.aktivitas-box h3 {
+    color: #2c5530;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.aktivitas-content p {
+    color: #2c5530;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.aktivitas-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.aktivitas-content li {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    padding-left: 0;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Styles untuk Kesimpulan */
+.kesimpulan-container {
+    display: flex;
+    justify-content: center;
+}
+
+.kesimpulan-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 800px;
+    width: 100%;
+}
+
+.kesimpulan-card h3 {
+    color: #2c5530;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+    padding-bottom: 1rem;
+}
+
+.poin-penting {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.poin-item {
+    display: flex;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.poin-icon {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.poin-text {
+    color: #2c5530;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.pesan-motivasi {
+    background: rgba(76, 175, 80, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    text-align: center;
+}
+
+.pesan-motivasi h4 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.pesan-motivasi p {
+    color: #2c5530;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Styles untuk kuis (tetap sama) */
+.kuis-container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.question-card {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.question-card h3 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+}
+
+.question-card p {
+    color: #2c5530;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2c5530;
+    font-weight: 500;
+    text-align: left;
+}
+
+.option-btn:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateX(5px);
+}
+
+.option-btn.correct {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: #4CAF50;
+}
+
+.option-btn.wrong {
+    background: rgba(244, 67, 54, 0.3);
+    border-color: #f44336;
+}
+
+.score-card {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 2rem;
+}
+
+.score-card h3 {
+    color: #2c5530;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.kuis-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.reset-btn {
+    background: rgba(76, 175, 80, 0.3);
+    border: 1px solid rgba(76, 175, 80, 0.6);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2c5530;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.menu-btn {
+    background: rgba(33, 150, 243, 0.3);
+    border: 1px solid rgba(33, 150, 243, 0.6);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2c5530;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5rem;
+    width: 200px;
+    text-align: center;
+}
+
+.reset-btn:hover, .menu-btn:hover {
+    transform: translateY(-2px);
+}
+
+.reset-btn:hover {
+    background: rgba(76, 175, 80, 0.5);
+}
+
+.menu-btn:hover {
+    background: rgba(33, 150, 243, 0.5);
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.nav-prev, .nav-next {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2c5530;
+    font-weight: bold;
+}
+
+.nav-prev:hover, .nav-next:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Sembunyikan tombol navigasi di halaman kuis */
+#kuis .navigation-buttons {
+    display: none;
+}
+
+/* Utility Classes */
+.highlight {
+    background: rgba(76, 175, 80, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.definition-card, .example-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 1.5rem;
+}
+
+.definition-card h3, .example-card h3 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.definition-card p, .example-card p {
+    color: #2c5530;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .materi-content {
+        padding: 1rem;
+    }
+
+    .bab-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .effect-grid,
+    .pengaruh-grid,
+    .penerapan-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contoh-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .nav-prev, .nav-next {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .kuis-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reset-btn, .menu-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .ilustrasi-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .poin-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .poin-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title h1 {
+        font-size: 1.4rem;
+    }
+
+    .bab-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .definition-card, .example-card, .jenis-gaya-card, .pengaruh-card, .penerapan-card {
+        padding: 1.5rem;
+    }
+
+    .kuis-container {
+        padding: 1rem;
+    }
+
+    .contoh-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kesimpulan-card {
+        padding: 1.5rem;
+    }
+}

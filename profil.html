@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Virtual Lab Sains SD</title>
+    <meta name="app-version" content="1.0.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-profil.css">
+    
+    <!-- Redirect Script -->
+    <script>
+        // Cek jika user belum melihat cover page
+        if (!sessionStorage.getItem('coverShown')) {
+            // Redirect ke cover.html
+            window.location.href = 'cover.html';
+        }
+    </script>
+    <style>
+        /* Sembunyikan konten sementara untuk menghindari flash */
+        body {
+            visibility: hidden;
+        }
+        
+        /* Tampilkan setelah redirect check selesai */
+        body.loaded {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="science-elements">
+            <div class="element"></div>
+            <div class="element"></div>
+            <div class="element"></div>
+        </div>
+    </div>
+
+    <header class="profile-header">
+        <div class="header-content">
+            <div class="title">
+                <h1>PROFIL PENGAJAR</h1>
+                <p>Identitas Pengembang Laboratorium Virtual SD</p>
+            </div>
+            <div class="user-info">
+                <div class="user-photo">
+                    <img src="asset/fotofriss.jpg" alt="Foto Guru">
+                </div>
+                <span>Profil</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header-card">
+                <div class="profile-avatar">
+                    <img src="asset/fotofriss.jpg" alt="Frissenda Septrianur">
+                </div>
+                <div class="profile-info">
+                    <h1>Frissenda Septrianur Marinda Karno Putri</h1>
+                    <p class="subject">Mahasiswa Pendidikan Guru Sekolah Dasar</p>
+                    <div class="school-info">
+                        <span class="school">Universitas Trunojoyo Madura</span>
+                        <span class="experience">NIM: 220611100069</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-details">
+                <div class="detail-section">
+                    <h2>📋 Data Pribadi</h2>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="label">Nama Lengkap</span>
+                            <span class="value">Frissenda Septrianur Marinda Karno Putri</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">NIM</span>
+                            <span class="value">220611100069</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Universitas</span>
+                            <span class="value">Universitas Trunojoyo Madura</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Fakultas</span>
+                            <span class="value">Ilmu Pendidikan</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Program Studi</span>
+                            <span class="value">Pendidikan Guru Sekolah Dasar (PGSD)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Email</span>
+                            <span class="value">smkpfrissenda@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h2>🎓 Riwayat Pendidikan</h2>
+                    <div class="education-list">
+                        <div class="education-item">
+                            <div class="edu-icon">🎓</div>
+                            <div class="edu-info">
+                                <h3>Pendidikan Guru Sekolah Dasar</h3>
+                                <p>Universitas Trunojoyo Madura</p>
+                                <small>NIM: 220611100069</small>
+                            </div>
+                        </div>
+                        <div class="education-item">
+                            <div class="edu-icon">📚</div>
+                            <div class="edu-info">
+                                <h3>Fakultas Ilmu Pendidikan</h3>
+                                <p>Universitas Trunojoyo Madura</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h2>📞 Kontak</h2>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <div class="contact-info">
+                                <strong>Email</strong>
+                                <p>smkpfrissenda@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🎓</span>
+                            <div class="contact-info">
+                                <strong>Universitas</strong>
+                                <p>Universitas Trunojoyo Madura</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📚</span>
+                            <div class="contact-info">
+                                <strong>Program Studi</strong>
+                                <p>Pendidikan Guru Sekolah Dasar (PGSD)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOMBOL SELANJUTNYA -->
+            <div class="next-button-container">
+                <button class="next-button" onclick="lanjutKeMenuUtama()">
+                    🚀 Selanjutnya ke Menu Utama
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="profile-footer">
+        <p>© 2025 Virtual Lab Sains SD | Frissenda Septrianur Marinda Karno Putri - 220611100069</p>
+    </footer>
+
+    <script>
+        // Tampilkan body setelah semua script selesai
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        function lanjutKeMenuUtama() {
+            // Redirect ke index.html
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

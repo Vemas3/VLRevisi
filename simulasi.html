@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Interaktif - Virtual Lab Sains SD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-simulasi.css">
+    
+    <!-- Redirect Script -->
+    <script>
+        if (!sessionStorage.getItem('coverShown')) {
+            window.location.href = 'cover.html';
+        }
+    </script>
+    <style>
+        body {
+            visibility: hidden;
+        }
+        body.loaded {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <header class="simulasi-drag-header">
+        <div class="header-content">
+            <a href="index.html" class="back-btn">⬅️ Kembali ke Menu Simulasi</a>
+            <div class="title">
+                <h1>🔬 SIMULASI INTERAKTIF GAYA</h1>
+                <p>Drag & Drop Objek dan Pilih Jenis Gaya</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="simulasi-interaktif-container">
+        <!-- Sidebar Kiri - Objek Drag & Drop -->
+        <div class="objects-sidebar">
+            <h3 class="sidebar-title">🎯 OBJEK PERCOBAAN</h3>
+            <div class="objects-grid">
+                <div class="drag-object" draggable="true" data-type="manusia" data-src="asset/manusia.png">
+                    <div class="object-icon">👦</div>
+                    <div class="object-name">Manusia</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="mobil" data-src="asset/mobil.png">
+                    <div class="object-icon">🚗</div>
+                    <div class="object-name">Mobil</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="bola" data-src="asset/bola.png">
+                    <div class="object-icon">🏀</div>
+                    <div class="object-name">Bola</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="magnet" data-src="asset/magnet.png">
+                    <div class="object-icon">🧲</div>
+                    <div class="object-name">Magnet</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="paku" data-src="asset/paku.png">
+                    <div class="object-icon">📌</div>
+                    <div class="object-name">Paku</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="pegas" data-src="asset/pegas.png">
+                    <div class="object-icon">🌀</div>
+                    <div class="object-name">Pegas</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="beban" data-src="asset/beban.png">
+                    <div class="object-icon">⚖️</div>
+                    <div class="object-name">Beban</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="meja" data-src="asset/meja.png">
+                    <div class="object-icon">🪑</div>
+                    <div class="object-name">Meja</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="aspal" data-src="asset/aspal.png">
+                    <div class="object-icon">🛣️</div>
+                    <div class="object-name">Aspal</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="tanah" data-src="asset/tanah.png">
+                    <div class="object-icon">🌱</div>
+                    <div class="object-name">Tanah</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Area Simulasi Tengah -->
+        <div class="simulation-area" id="simulationArea">
+            <div class="area-label">
+                <h3>🎪 AREA EKSPERIMEN</h3>
+                <p>Tarik objek dari sidebar kiri ke sini</p>
+            </div>
+        </div>
+
+        <!-- Sidebar Kanan - Pilihan Gaya & Kontrol -->
+        <div class="controls-sidebar">
+            <!-- Pilihan Jenis Gaya -->
+            <div class="gaya-section">
+                <h3 class="controls-title">🎯 PILIH JENIS GAYA</h3>
+                <div class="gaya-buttons">
+                    <button class="gaya-btn active" data-gaya="pegas">
+                        <span class="gaya-icon">💨</span>
+                        <span class="gaya-name">Gaya Pegas</span>
+                    </button>
+                    <button class="gaya-btn" data-gaya="gesek">
+                        <span class="gaya-icon">🔄</span>
+                        <span class="gaya-name">Gaya Gesek</span>
+                    </button>
+                    <button class="gaya-btn" data-gaya="magnet">
+                        <span class="gaya-icon">🧲</span>
+                        <span class="gaya-name">Gaya Magnet</span>
+                    </button>
+                    <button class="gaya-btn" data-gaya="otot">
+                        <span class="gaya-icon">💪</span>
+                        <span class="gaya-name">Gaya Otot</span>
+                    </button>
+                    <button class="gaya-btn" data-gaya="gravitasi">
+                        <span class="gaya-icon">🌍</span>
+                        <span class="gaya-name">Gaya Gravitasi</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kontrol Simulasi -->
+            <div class="control-section">
+                <h3 class="controls-title">🎮 KONTROL SIMULASI</h3>
+                <div class="control-buttons">
+                    <button class="control-btn play" onclick="jalankanSimulasi()">
+                        <span class="btn-icon">▶️</span>
+                        <span class="btn-text">Jalankan Simulasi</span>
+                    </button>
+                    <button class="control-btn reset" onclick="resetSimulasi()">
+                        <span class="btn-icon">🔄</span>
+                        <span class="btn-text">Reset Semua</span>
+                    </button>
+                    <button class="control-btn hapus" onclick="hapusSemuaObjek()">
+                        <span class="btn-icon">🗑️</span>
+                        <span class="btn-text">Hapus Objek</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Informasi Gaya -->
+            <div class="info-section">
+                <h3 class="controls-title">📋 INFORMASI GAYA</h3>
+                <div class="info-content">
+                    <div class="info-item">
+                        <span class="info-label">Gaya Dipilih:</span>
+                        <span class="info-value" id="selectedGaya">Gaya Pegas</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Deskripsi:</span>
+                        <span class="info-desc" id="gayaDescription">Gaya yang dihasilkan oleh benda elastis seperti pegas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Pengamatan -->
+            <div class="data-panel">
+                <h3>📊 DATA PENGAMATAN</h3>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <span class="data-label">Objek di Area:</span>
+                        <span class="data-value" id="objectCount">0</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Status:</span>
+                        <span class="data-value" id="simStatus">Siap</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Gaya Aktif:</span>
+                        <span class="data-value" id="activeForce">-</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Hasil:</span>
+                        <span class="data-value" id="result">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-simulasi-drag.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+            initDragAndDrop();
+            initGayaButtons();
+        });
+
+        let selectedGaya = 'pegas';
+
+        function initGayaButtons() {
+            const gayaButtons = document.querySelectorAll('.gaya-btn');
+            
+            gayaButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Hapus active dari semua button
+                    gayaButtons.forEach(b => b.classList.remove('active'));
+                    // Tambah active ke button yang diklik
+                    this.classList.add('active');
+                    
+                    selectedGaya = this.dataset.gaya;
+                    updateGayaInfo();
+                });
+            });
+        }
+
+        function updateGayaInfo() {
+            const gayaInfo = {
+                'pegas': {
+                    name: 'Gaya Pegas',
+                    desc: 'Gaya yang dihasilkan oleh benda elastis seperti pegas dan trampolin'
+                },
+                'gesek': {
+                    name: 'Gaya Gesek',
+                    desc: 'Gaya yang menghambat gerak benda ketika bersentuhan dengan permukaan'
+                },
+                'magnet': {
+                    name: 'Gaya Magnet',
+                    desc: 'Gaya yang menarik atau menolak benda magnetis seperti besi'
+                },
+                'otot': {
+                    name: 'Gaya Otot',
+                    desc: 'Gaya yang dihasilkan oleh makhluk hidup untuk bergerak'
+                },
+                'gravitasi': {
+                    name: 'Gaya Gravitasi',
+                    desc: 'Gaya tarik bumi yang menarik semua benda ke pusat bumi'
+                }
+            };
+
+            document.getElementById('selectedGaya').textContent = gayaInfo[selectedGaya].name;
+            document.getElementById('gayaDescription').textContent = gayaInfo[selectedGaya].desc;
+        }
+
+        function jalankanSimulasi() {
+            const objects = document.querySelectorAll('.dropped-object');
+            if (objects.length === 0) {
+                alert('🚫 Silakan tarik objek ke area simulasi terlebih dahulu!');
+                return;
+            }
+
+            document.getElementById('simStatus').textContent = 'Berjalan...';
+            
+            // Panggil fungsi simulasi berdasarkan gaya yang dipilih
+            switch(selectedGaya) {
+                case 'pegas':
+                    runPegasSimulation();
+                    break;
+                case 'gesek':
+                    runGesekSimulation();
+                    break;
+                case 'magnet':
+                    runMagnetSimulation();
+                    break;
+                case 'otot':
+                    runOtotSimulation();
+                    break;
+                case 'gravitasi':
+                    runGravitasiSimulation();
+                    break;
+            }
+        }
+
+        function runPegasSimulation() {
+            const trampolin = document.querySelector('.dropped-object[data-type="pegas"]');
+            const manusia = document.querySelector('.dropped-object[data-type="manusia"]');
+            const bola = document.querySelector('.dropped-object[data-type="bola"]');
+            
+            if (trampolin && (manusia || bola)) {
+                document.getElementById('activeForce').textContent = 'Kuat';
+                document.getElementById('result').textContent = 'Benda Melompat';
+                
+                if (manusia) {
+                    animateJump(manusia, 120);
+                }
+                if (bola) {
+                    animateJump(bola, 80);
+                }
+                
+                showResult('Gaya pegas berhasil mendorong benda ke atas!');
+            } else {
+                showError('Untuk gaya pegas, dibutuhkan pegas/trampolin dan manusia/bola!');
+            }
+        }
+
+        function runGesekSimulation() {
+            const mobil = document.querySelector('.dropped-object[data-type="mobil"]');
+            const aspal = document.querySelector('.dropped-object[data-type="aspal"]');
+            const tanah = document.querySelector('.dropped-object[data-type="tanah"]');
+            
+            if (mobil && (aspal || tanah)) {
+                const surface = aspal ? 'aspal' : 'tanah';
+                document.getElementById('activeForce').textContent = surface === 'aspal' ? 'Kecil' : 'Besar';
+                document.getElementById('result').textContent = surface === 'aspal' ? 'Cepat' : 'Lambat';
+                
+                animateMove(mobil, surface === 'aspal' ? 300 : 200, surface === 'aspal' ? 2000 : 4000);
+                showResult(`Gaya gesek di ${surface} ${surface === 'aspal' ? 'kecil' : 'besar'}!`);
+            } else {
+                showError('Untuk gaya gesek, dibutuhkan mobil dan permukaan (aspal/tanah)!');
+            }
+        }
+
+        function runMagnetSimulation() {
+            const magnet = document.querySelector('.dropped-object[data-type="magnet"]');
+            const paku = document.querySelector('.dropped-object[data-type="paku"]');
+            
+            if (magnet && paku) {
+                document.getElementById('activeForce').textContent = 'Aktif';
+                document.getElementById('result').textContent = 'Menarik Paku';
+                
+                animateMagnetAttract(magnet, paku);
+                showResult('Magnet menarik paku! Paku terbuat dari besi yang bersifat magnetis.');
+            } else {
+                showError('Untuk gaya magnet, dibutuhkan magnet dan paku!');
+            }
+        }
+
+        function runOtotSimulation() {
+            const manusia = document.querySelector('.dropped-object[data-type="manusia"]');
+            const meja = document.querySelector('.dropped-object[data-type="meja"]');
+            const bola = document.querySelector('.dropped-object[data-type="bola"]');
+            
+            if (manusia) {
+                document.getElementById('activeForce').textContent = 'Aktif';
+                
+                if (meja) {
+                    document.getElementById('result').textContent = 'Mendorong Meja';
+                    animateMove(meja, 200, 2000);
+                    showResult('Manusia berhasil mendorong meja menggunakan gaya otot!');
+                } else if (bola) {
+                    document.getElementById('result').textContent = 'Melempar Bola';
+                    animateThrow(bola, 150, -100);
+                    showResult('Manusia berhasil melempar bola menggunakan gaya otot!');
+                } else {
+                    showError('Manusia butuh objek untuk diinteraksikan (meja/bola)!');
+                }
+            } else {
+                showError('Untuk gaya otot, dibutuhkan manusia!');
+            }
+        }
+
+        function runGravitasiSimulation() {
+            const fallingObjects = document.querySelectorAll('.dropped-object[data-type="bola"], .dropped-object[data-type="beban"]');
+            
+            if (fallingObjects.length > 0) {
+                document.getElementById('activeForce').textContent = 'Aktif';
+                document.getElementById('result').textContent = 'Benda Jatuh';
+                
+                fallingObjects.forEach((obj, index) => {
+                    setTimeout(() => {
+                        animateFall(obj, 200);
+                    }, index * 500);
+                });
+                
+                setTimeout(() => {
+                    showResult('Semua benda jatuh karena gaya gravitasi bumi!');
+                }, fallingObjects.length * 500 + 1500);
+            } else {
+                showError('Tarik benda yang bisa jatuh (bola/beban)!');
+            }
+        }
+
+        // Fungsi animasi helper
+        function animateJump(element, height) {
+            element.style.transition = 'all 1s ease-in-out';
+            setTimeout(() => {
+                element.style.transform = `translateY(-${height}px)`;
+            }, 500);
+            setTimeout(() => {
+                element.style.transform = 'translateY(0)';
+            }, 1500);
+        }
+
+        function animateMove(element, distance, duration) {
+            element.style.transition = `all ${duration}ms ease-in-out`;
+            element.style.transform = `translateX(${distance}px)`;
+        }
+
+        function animateMagnetAttract(magnet, paku) {
+            const magnetRect = magnet.getBoundingClientRect();
+            paku.style.transition = 'all 1.5s ease-in-out';
+            paku.style.left = (magnetRect.left + 50) + 'px';
+        }
+
+        function animateThrow(element, x, y) {
+            element.style.transition = 'all 1s ease-in-out';
+            element.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        function animateFall(element, distance) {
+            element.style.transition = 'all 1.5s ease-in-out';
+            element.style.transform = `translateY(${distance}px)`;
+        }
+
+        function showResult(message) {
+            setTimeout(() => {
+                document.getElementById('simStatus').textContent = 'Selesai';
+                alert('🎉 ' + message);
+            }, 2000);
+        }
+
+        function showError(message) {
+            alert('⚠️ ' + message);
+            document.getElementById('simStatus').textContent = 'Siap';
+            document.getElementById('activeForce').textContent = '-';
+            document.getElementById('result').textContent = '-';
+        }
+
+        function resetSimulasi() {
+            document.querySelectorAll('.dropped-object').forEach(obj => {
+                obj.style.transform = 'none';
+                obj.style.transition = 'none';
+                obj.remove();
+            });
+            document.getElementById('objectCount').textContent = '0';
+            document.getElementById('simStatus').textContent = 'Siap';
+            document.getElementById('activeForce').textContent = '-';
+            document.getElementById('result').textContent = '-';
+        }
+
+        function hapusSemuaObjek() {
+            document.querySelectorAll('.dropped-object').forEach(obj => obj.remove());
+            document.getElementById('objectCount').textContent = '0';
+        }
+    </script>
+</body>
+</html>

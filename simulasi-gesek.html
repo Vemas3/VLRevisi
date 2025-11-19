@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Gaya Gesek - Virtual Lab Sains SD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-simulasi-drag.css">
+    
+    <!-- Redirect Script -->
+    <script>
+        if (!sessionStorage.getItem('coverShown')) {
+            window.location.href = 'cover.html';
+        }
+    </script>
+    <style>
+        body {
+            visibility: hidden;
+        }
+        body.loaded {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <header class="simulasi-drag-header">
+        <div class="header-content">
+            <a href="simulasi.html" class="back-btn">⬅️ Kembali</a>
+            <div class="title">
+                <h1>🔄 SIMULASI GAYA GESEK</h1>
+                <p>Drag & Drop Objek untuk Eksperimen</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="simulasi-drag-container">
+        <!-- Sidebar Kiri - Objek Drag & Drop -->
+        <div class="objects-sidebar">
+            <h3 class="sidebar-title">🎯 Objek Percobaan</h3>
+            <div class="objects-grid">
+                <div class="drag-object" draggable="true" data-type="mobil" data-src="asset/mobil.png">
+                    <div class="object-icon">🚗</div>
+                    <div class="object-name">Mobil</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="aspal" data-src="asset/aspal.png">
+                    <div class="object-icon">🛣️</div>
+                    <div class="object-name">Aspal</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="tanah" data-src="asset/tanah.png">
+                    <div class="object-icon">🌱</div>
+                    <div class="object-name">Tanah</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="bola" data-src="asset/bola.png">
+                    <div class="object-icon">🏀</div>
+                    <div class="object-name">Bola</div>
+                </div>
+                <div class="drag-object" draggable="true" data-type="meja" data-src="asset/meja.png">
+                    <div class="object-icon">🪑</div>
+                    <div class="object-name">Meja</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Area Simulasi Tengah -->
+        <div class="simulation-area" id="simulationArea">
+            <div class="drop-zone" id="mainDropZone"></div>
+        </div>
+
+        <!-- Sidebar Kanan - Kontrol -->
+        <div class="controls-sidebar">
+            <h3 class="controls-title">🎮 Kontrol Simulasi</h3>
+            
+            <div class="control-buttons">
+                <button class="control-btn play" onclick="jalankanSimulasi()">
+                    ▶️ Jalankan Simulasi
+                </button>
+                <button class="control-btn reset" onclick="resetSimulasi()">
+                    🔄 Reset Semua
+                </button>
+                <button class="control-btn" onclick="hapusSemuaObjek()">
+                    🗑️ Hapus Objek
+                </button>
+            </div>
+
+            <div class="data-panel">
+                <h3>📊 Data Pengamatan</h3>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <span class="data-label">Objek di Area:</span>
+                        <span class="data-value" id="objectCount">0</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Status:</span>
+                        <span class="data-value" id="simStatus">Siap</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Gaya Gesek:</span>
+                        <span class="data-value" id="frictionForce">-</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Kecepatan:</span>
+                        <span class="data-value" id="speed">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-simulasi-drag.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+            initDragAndDrop();
+        });
+
+        function jalankanSimulasi() {
+            const objects = document.querySelectorAll('.dropped-object');
+            if (objects.length === 0) {
+                alert('🚫 Silakan tarik objek ke area simulasi terlebih dahulu!');
+                return;
+            }
+
+            document.getElementById('simStatus').textContent = 'Berjalan...';
+            
+            const mobil = document.querySelector('.dropped-object[data-type="mobil"]');
+            const aspal = document.querySelector('.dropped-object[data-type="aspal"]');
+            const tanah = document.querySelector('.dropped-object[data-type="tanah"]');
+            
+            if (mobil && (aspal || tanah)) {
+                const surface = aspal ? 'aspal' : 'tanah';
+                
+                if (surface === 'aspal') {
+                    document.getElementById('frictionForce').textContent = 'Kecil';
+                    document.getElementById('speed').textContent = 'Cepat';
+                    // Animasi mobil di aspal
+                    mobil.style.transition = 'all 2s ease-in-out';
+                    mobil.style.transform = 'translateX(300px)';
+                } else {
+                    document.getElementById('frictionForce').textContent = 'Besar';
+                    document.getElementById('speed').textContent = 'Lambat';
+                    // Animasi mobil di tanah
+                    mobil.style.transition = 'all 4s ease-in-out';
+                    mobil.style.transform = 'translateX(200px)';
+                }
+                
+                setTimeout(() => {
+                    document.getElementById('simStatus').textContent = 'Selesai';
+                    alert(`🎉 Simulasi selesai! Gaya gesek di ${surface} ${surface === 'aspal' ? 'kecil' : 'besar'}.`);
+                }, surface === 'aspal' ? 2500 : 4500);
+            } else {
+                alert('⚠️ Untuk simulasi gaya gesek, dibutuhkan mobil dan permukaan (aspal/tanah)!');
+                document.getElementById('simStatus').textContent = 'Siap';
+            }
+        }
+
+        function resetSimulasi() {
+            document.querySelectorAll('.dropped-object').forEach(obj => {
+                obj.style.transform = 'none';
+                obj.remove();
+            });
+            document.getElementById('objectCount').textContent = '0';
+            document.getElementById('simStatus').textContent = 'Siap';
+            document.getElementById('frictionForce').textContent = '-';
+            document.getElementById('speed').textContent = '-';
+        }
+
+        function hapusSemuaObjek() {
+            document.querySelectorAll('.dropped-object').forEach(obj => obj.remove());
+            document.getElementById('objectCount').textContent = '0';
+        }
+    </script>
+</body>
+</html>

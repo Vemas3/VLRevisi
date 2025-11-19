@@ -1,0 +1,482 @@
+/* Styles khusus untuk simulasi gaya gravitasi */
+.simulasi-header {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #2c5530;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateX(-5px);
+}
+
+.title h1 {
+    color: #2c5530;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.title p {
+    color: #2c5530;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.simulasi-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.experiment-area {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.experiment-info {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.experiment-info h2 {
+    color: #2c5530;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.experiment-info p {
+    color: #2c5530;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.simulation-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    color: #2c5530;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.control-group select {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    color: #2c5530;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.start-btn, .reset-btn {
+    background: rgba(156, 39, 176, 0.3);
+    border: 1px solid rgba(156, 39, 176, 0.6);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2c5530;
+    font-weight: bold;
+}
+
+.start-btn:hover, .reset-btn:hover {
+    background: rgba(156, 39, 176, 0.5);
+    transform: translateY(-2px);
+}
+
+.reset-btn {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: rgba(76, 175, 80, 0.6);
+}
+
+/* Simulation Area */
+.simulation-area {
+    position: relative;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Tanah - PERBAIKI DENGAN MARGIN NEGATIF */
+.ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 110px; /* TAMBAH TINGGI */
+    background: linear-gradient(to bottom, #8B4513, #5D4037, #8B4513);
+    border-top: 4px solid #4E342E;
+    z-index: 10;
+    /* TAMBAHKAN SHADOW UNTUK MENUTUPI CELAH */
+    box-shadow: 0 -5px 10px rgba(139, 69, 19, 0.8);
+}
+
+.ground-label {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #2c5530;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.3rem 1rem;
+    border-radius: 15px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Langit */
+.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 100px);
+    background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+}
+
+/* Container Pohon - SOLUSI DEFINITIF */
+.tree-container {
+    position: absolute;
+    bottom: -115px; /* MASUK SANGAT DALAM KE TANAH */
+    left: 200px;
+    width: 200px;
+    height: 400px; /* TINGGI EKSTRA */
+    z-index: 15;
+    overflow: visible;
+}
+
+/* Pohon - PERBAIKI OBJECT FIT */
+.tree-image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* GUNAKAN FILL BUKAN COVER */
+    object-position: bottom center; /* PASTIKAN BAWAH DI BAWAH */
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.2));
+    position: relative;
+    z-index: 5;
+    /* TAMBAHKAN MARGIN UNTUK MEMASTIKAN MENYENTUH */
+    margin-bottom: -10px;
+}
+
+.tree-label {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #2c5530;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    z-index: 25;
+}
+
+/* Buah-buahan */
+.fruit {
+    position: absolute;
+    z-index: 20; /* Lebih tinggi dari pohon */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.fruit-image {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.6));
+    transition: all 0.3s ease;
+}
+
+/* Efek hover pada buah */
+.fruit:hover {
+    transform: scale(1.15);
+    filter: brightness(1.3);
+    z-index: 25;
+}
+
+.fruit.falling {
+    animation: fruitFall 2s ease-in forwards, fruitBounce 0.5s ease-out 2s forwards;
+    pointer-events: none;
+}
+
+/* Animasi buah jatuh */
+@keyframes fruitFall {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    20% {
+        transform: translate(0, 20px) rotate(45deg);
+        opacity: 1;
+    }
+    40% {
+        transform: translate(0, 60px) rotate(90deg);
+        opacity: 1;
+    }
+    60% {
+        transform: translate(0, 120px) rotate(135deg);
+        opacity: 1;
+    }
+    80% {
+        transform: translate(0, 180px) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, 270px) rotate(240deg); /* SESUAIKAN DENGAN TINGGI BARU */
+        opacity: 0.9;
+    }
+}
+
+/* Efek bounce saat menyentuh tanah */
+@keyframes fruitBounce {
+    0%, 100% {
+        transform: translate(0, 270px) rotate(240deg);
+    }
+    50% {
+        transform: translate(0, 265px) rotate(240deg);
+    }
+}
+
+/* Efek gravitasi */
+.gravity-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(156, 39, 176, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.gravity-effect.active {
+    opacity: 1;
+    animation: gravityPulse 2s ease-in-out infinite;
+}
+
+@keyframes gravityPulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: scale(1.05);
+        opacity: 0.5;
+    }
+}
+
+/* Data Panel */
+.data-panel {
+    margin-bottom: 2rem;
+}
+
+.data-card {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.data-card h3 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.data-label {
+    color: #2c5530;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.data-value {
+    color: #2c5530;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Conclusion Section */
+.conclusion-section {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.conclusion-card h3 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.conclusion-content p {
+    color: #2c5530;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Background elements */
+.background {
+    display: none;
+}
+
+.science-elements {
+    display: none;
+}
+
+.element {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .simulation-area {
+        height: 450px;
+    }
+
+    /* Tree Container - Responsive untuk tablet */
+    .tree-container {
+        width: 150px;
+        height: 300px; /* SESUAIKAN tinggi */
+        left: 100px;
+        bottom: -10px; /* TETAP MASUK KE TANAH */
+    }
+
+    /* Ground - Responsive untuk tablet */
+    .ground {
+        height: 105px;
+    }
+
+    /* Buah - Responsive untuk tablet */
+    .fruit-image {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Animasi untuk tablet */
+    @keyframes fruitFall {
+        0% {
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(0, 220px) rotate(240deg);
+            opacity: 0.9;
+        }
+    }
+
+    @keyframes fruitBounce {
+        0%, 100% {
+            transform: translate(0, 220px) rotate(240deg);
+        }
+        50% {
+            transform: translate(0, 215px) rotate(240deg);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .simulation-area {
+        height: 400px;
+    }
+
+    /* Tree Container - Responsive untuk mobile */
+    .tree-container {
+        width: 120px;
+        height: 250px; /* SESUAIKAN tinggi */
+        left: 50px;
+        bottom: -8px; /* TETAP MASUK KE TANAH */
+    }
+
+    /* Ground - Responsive untuk mobile */
+    .ground {
+        height: 100px;
+    }
+
+    /* Buah - Responsive untuk mobile */
+    .fruit-image {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Animasi untuk mobile */
+    @keyframes fruitFall {
+        0% {
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(0, 180px) rotate(240deg);
+            opacity: 0.9;
+        }
+    }
+
+    @keyframes fruitBounce {
+        0%, 100% {
+            transform: translate(0, 180px) rotate(240deg);
+        }
+        50% {
+            transform: translate(0, 175px) rotate(240deg);
+        }
+    }
+}

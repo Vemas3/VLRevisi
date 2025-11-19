@@ -1,0 +1,404 @@
+/* Styles khusus untuk simulasi gaya gesek */
+.simulasi-header {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #2c5530;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateX(-5px);
+}
+
+.title h1 {
+    color: #2c5530;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.title p {
+    color: #2c5530;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.simulasi-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.experiment-area {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.experiment-info {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.experiment-info h2 {
+    color: #2c5530;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.experiment-info p {
+    color: #2c5530;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.simulation-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    color: #2c5530;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.control-group select {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    color: #2c5530;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.start-btn, .reset-btn {
+    background: rgba(76, 175, 80, 0.3);
+    border: 1px solid rgba(76, 175, 80, 0.6);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2c5530;
+    font-weight: bold;
+}
+
+.start-btn:hover, .reset-btn:hover {
+    background: rgba(76, 175, 80, 0.5);
+    transform: translateY(-2px);
+}
+
+.reset-btn {
+    background: rgba(33, 150, 243, 0.3);
+    border-color: rgba(33, 150, 243, 0.6);
+}
+
+/* Simulation Area */
+.simulation-area {
+    position: relative;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Permukaan */
+.surface {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.surface-label {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #2c5530;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.3rem 1rem;
+    border-radius: 15px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Permukaan Aspal */
+.asphalt {
+    background: linear-gradient(to bottom, #666666, #333333);
+}
+
+.asphalt .surface-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 20px,
+            rgba(255,255,255,0.1) 20px,
+            rgba(255,255,255,0.1) 40px
+        );
+}
+
+/* Permukaan Tanah */
+.soil {
+    background: linear-gradient(to bottom, #8B4513, #654321);
+}
+
+.soil .surface-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(139,69,19,0.4) 5px, transparent 5px),
+        radial-gradient(circle at 50% 70%, rgba(101,67,33,0.4) 8px, transparent 8px),
+        radial-gradient(circle at 80% 30%, rgba(160,82,45,0.4) 6px, transparent 6px);
+    background-size: 50px 50px;
+}
+
+/* Mobil dengan gambar PNG - DITURUNKAN agar menyentuh permukaan */
+.car {
+    position: absolute;
+    bottom: 50px; /* Bisa diturunkan lagi jika perlu */
+    left: 50px;
+    transition: left 3s linear;
+    z-index: 10;
+}
+
+.car-image {
+    width: 120px;
+    height: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    transform: scaleX(1);
+}
+
+/* Animasi mobil saat bergerak */
+.car.moving .car-image {
+    animation: bounce 0.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scaleX(1); }
+    50% { transform: translateY(-2px) scaleX(1); }
+}
+
+/* Garis Finish */
+.finish-line {
+    position: absolute;
+    right: 100px;
+    top: 0;
+    bottom: 80px;
+    width: 4px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #ff0000,
+        #ff0000 10px,
+        #ffffff 10px,
+        #ffffff 20px
+    );
+    z-index: 5;
+}
+
+.finish-line::after {
+    content: 'FINISH';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ff0000;
+    font-weight: bold;
+    background: rgba(255,255,255,0.9);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+}
+
+/* Data Panel */
+.data-panel {
+    margin-bottom: 2rem;
+}
+
+.data-card {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.data-card h3 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.data-label {
+    color: #2c5530;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.data-value {
+    color: #2c5530;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Conclusion Section */
+.conclusion-section {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.conclusion-card h3 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.conclusion-content p {
+    color: #2c5530;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Background elements */
+.background {
+    display: none;
+}
+
+.science-elements {
+    display: none;
+}
+
+.element {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .simulasi-container {
+        padding: 1rem;
+    }
+
+    .experiment-area {
+        padding: 1.5rem;
+    }
+
+    .simulation-controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .simulation-area {
+        height: 180px;
+    }
+
+    .car-image {
+        width: 100px;
+    }
+
+    .car {
+        bottom: 50px; /* Tetap diturunkan di mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .title h1 {
+        font-size: 1.5rem;
+    }
+
+    .experiment-info h2 {
+        font-size: 1.4rem;
+    }
+
+    .experiment-area {
+        padding: 1rem;
+    }
+
+    .simulation-area {
+        height: 160px;
+    }
+
+    .car-image {
+        width: 80px;
+    }
+
+    .car {
+        bottom: 50px; /* Tetap diturunkan di mobile */
+    }
+
+    .finish-line {
+        right: 80px;
+    }
+}
